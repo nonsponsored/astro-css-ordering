@@ -1,0 +1,18 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	font-family: sans-serif;
+	min-height: 100vh;
+	place-items: center;
+}
+
+h1 {
+	color: rebeccapurple;
+
+	&::before {
+		content: "Style from: _base.scss";
+	}
+}

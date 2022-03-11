@@ -1,0 +1,38 @@
+---
+import Component1 from '../components/Component1.astro';
+
+let title = 'Astro CSS Ordering';
+---
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>{title}</title>
+
+    <!-- 
+    In dev, h1 styling comes from Component1.astro.
+    In production, h1 styling comes from _base.scss.
+     -->
+    <link rel="stylesheet" href={Astro.resolve("../styles/global.scss")} />
+	
+    <!-- In dev and production, h1 styling comes from Component1.astro.
+    <style global>@import "../styles/global.scss";</style> -->
+</head>
+<body>
+	<main>
+
+		<Component1 />
+
+	</main>
+</body>
+</html>
+
+<style global lang="scss">
+    h1 {
+        color: slategray;
+
+        &::before {
+            content: 'Style from: index.astro';
+        }
+    }
+</style>
